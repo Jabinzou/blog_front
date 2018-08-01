@@ -1,6 +1,15 @@
 <template>
-  <div class="home-page">
-    <h1>123</h1>
+  <div class="home">
+    <div class="home__wrap">
+      <h1>Jabinzou</h1>
+      <h2>A Explorer In The Vast Universe</h2>
+      <ul class="clearfix">
+        <li v-for="(item, index) in routerList" :key="index">
+          <a :href="item.router" target="_blank" v-if="item.new">{{item.name}}</a>
+          <a :href="item.router" v-else>{{item.name}}</a>
+        </li>
+      </ul>
+    </div>
     <canvas class="canvas"/>
   </div>
 </template>
@@ -9,6 +18,17 @@
 export default {
   data () {
     return {
+      routerList: [{
+        router: '#/articles',
+        name: 'Blog'
+      }, {
+        router: '#/about',
+        name: 'About'
+      }, {
+        router: 'https://github.com/Jabinzou',
+        name: 'Github',
+        new: true // 新打开
+      }]
     };
   },
   mounted () {
@@ -68,6 +88,45 @@ export default {
 
 <style lang="scss" scoped>
 @import '@asset/css/common.scss';
+.home{
+  h1{
+    font-size: 24px;
+    letter-spacing: 8px;
+  }
+  h2 {
+    color: #999;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: .12em;
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+  &__wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    margin-top: -100px;
+    transform: translateX(-50%);
+    webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none
+  }
+  ul > li {
+    float: left;
+    &:not(:first-of-type) {
+      margin-left: 126px;
+    }
+    a {
+      color: $normal-color;
+      &:hover {
+        color: $regular-red;
+      }
+    }
+  }
+}
 canvas {
   position: absolute;
   top: 0;

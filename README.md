@@ -2,6 +2,10 @@
 
 > blog front end
 
+## develop rule
+1. css used 'BEM standard',block,elemnt,modifier
+2. markdown parser used 'marked'
+
 ## Build Setup
 
 ``` bash

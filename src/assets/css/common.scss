@@ -1,1 +1,14 @@
 @import './reset.scss';
+$nomal-back: #ffffff;
+$normal-color: #333;
+$regular-red: #f35626;
+.clearfix:after{
+  content:"";
+  display:block;
+  visibility:hidden;
+  clear:both;
+  height:0;
+}
+.clearfix{ /* 为了照顾ie6浏览器*/
+  zoom:1;
+}
