@@ -1,12 +1,23 @@
 <template>
   <div class="home">
     <div class="home__wrap">
-      <h1>Jabinzou</h1>
-      <h2>A Explorer In The Vast Universe</h2>
+      <h1 class="mega">Jabinzou</h1>
+      <h2>An Explorer In The Vast Universe</h2>
       <ul class="clearfix">
-        <li v-for="(item, index) in routerList" :key="index">
-          <a :href="item.router" target="_blank" v-if="item.new">{{item.name}}</a>
-          <a :href="item.router" v-else>{{item.name}}</a>
+        <li
+          v-for="(item, index) in routerList"
+          :key="index">
+          <a
+            :href="item.router"
+            target="_blank"
+            v-if="item.new">
+            {{ item.name }}
+          </a>
+          <a
+            :href="item.router"
+            v-else>
+            {{ item.name }}
+          </a>
         </li>
       </ul>
     </div>
@@ -89,9 +100,21 @@ export default {
 <style lang="scss" scoped>
 @import '@asset/css/common.scss';
 .home{
+  @media (min-width: 650px){
+    .mega {
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+  }
   h1{
-    font-size: 24px;
+    font-weight: 100;
     letter-spacing: 8px;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+    animation: 20s hue infinite;
   }
   h2 {
     color: #999;

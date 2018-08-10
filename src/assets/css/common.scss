@@ -12,3 +12,13 @@ $regular-red: #f35626;
 .clearfix{ /* 为了照顾ie6浏览器*/
   zoom:1;
 }
+//------------- nomal class here ----------------------//
+//---------- animation here -------------//
+@keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
