@@ -1,7 +1,9 @@
 @import './reset.scss';
+//------------ variable here ---------------//
 $nomal-back: #ffffff;
 $normal-color: #333;
 $regular-red: #f35626;
+//------------- nomal class here ----------------------//
 .clearfix:after{
   content:"";
   display:block;
@@ -12,7 +14,6 @@ $regular-red: #f35626;
 .clearfix{ /* 为了照顾ie6浏览器*/
   zoom:1;
 }
-//------------- nomal class here ----------------------//
 //---------- animation here -------------//
 @keyframes hue {
   from {
