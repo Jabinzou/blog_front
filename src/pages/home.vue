@@ -30,10 +30,10 @@ export default {
   data () {
     return {
       routerList: [{
-        router: '#/articles',
+        router: '/articles',
         name: 'Blog'
       }, {
-        router: '#/about',
+        router: '/about',
         name: 'About'
       }, {
         router: 'https://github.com/Jabinzou',
