@@ -34,6 +34,7 @@ module.exports = {
       "ForOfStatement",
       "LabeledStatement",
       "WithStatement"
-    ]
+    ],
+    'space-before-function-parentheses': {"anonymous": "always", "named": "never"}
   }
 }
