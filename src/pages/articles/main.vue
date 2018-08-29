@@ -1,8 +1,18 @@
 <template>
-  <h1>123</h1>
+  <div>
+    <p><strong>123</strong></p>
+   <p><strong>123</strong></p>
+   <pre>
+     <code data-language="javascript" class="lang-javascript">
+       const a = '123';
+      </code>
+</pre>
+  </div>
 </template>
 <script>
 import { getList } from '@api';
+import 'highlight.js/styles/atom-one-dark.css';
+import hljs from 'highlight.js';
 export default {
   data() {
     return{
@@ -11,10 +21,14 @@ export default {
   },
   async created() {
     await getList();
+  },
+  mounted() {
+    hljs.initHighlightingOnLoad();
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+@import 'highlight.js/styles/atom-one-dark.css'; // code block highlight
 
 </style>
 
