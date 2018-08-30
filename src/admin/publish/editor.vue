@@ -6,6 +6,10 @@
 </template>
 <script>
 import Editor from 'tui-editor';
+import 'codemirror/lib/codemirror.css'; // codemirror
+import 'tui-editor/dist/tui-editor.css'; // editor ui
+import 'tui-editor/dist/tui-editor-contents.css'; // editor content
+import 'highlight.js/styles/atom-one-dark.css'
 export default {
   data() {
     return {
@@ -26,16 +30,14 @@ export default {
   methods: {
     getIner() {
       const lo =  this.editor;
-      console.log(lo.getMarkdown());
-      console.log(lo.convertor.toHTMLWithCodeHightlight())
+      console.log(lo.getHtml());
+      // console.log(lo.convertor.toHTMLWithCodeHightlight())
     }
   }
 }
 </script>
-<style lang="scss">
-@import 'codemirror/lib/codemirror.css'; // codemirror
-@import 'tui-editor/dist/tui-editor.css'; // editor ui
-@import 'tui-editor/dist/tui-editor-contents.css'; // editor content
+<style lang="scss" scoped>
+
 
 </style>
 
