@@ -11,25 +11,25 @@ import 'tui-editor/dist/tui-editor.css'; // editor ui
 import 'tui-editor/dist/tui-editor-contents.css'; // editor content
 import 'highlight.js/styles/atom-one-dark.css'
 export default {
-  data() {
+  data () {
     return {
       editor: null // editor instance
-    }
+    };
   },
-  mounted() {
-    this.editor =  Editor.factory({
+  mounted () {
+    this.editor = Editor.factory({
       el: document.querySelector('#editor'),
       initialEditType: 'markdown',
       previewStyle: 'vertical',
       height: '600px',
       language: 'zh',
       exts: ['scrollSync'],
-      codeBlockLanguages: ['javascript','css','html']
+      codeBlockLanguages: ['javascript', 'css', 'html']
     });
   },
   methods: {
-    getIner() {
-      const lo =  this.editor;
+    getIner () {
+      const lo = this.editor;
       console.log(lo.getHtml());
       // console.log(lo.convertor.toHTMLWithCodeHightlight())
     }

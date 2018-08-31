@@ -5,15 +5,25 @@
 .hljs {
   position: relative;
   border-radius: 4px;
+  color: #ccc;
+  font-family: "Consolas","Monaco","Andale Mono","Ubuntu Mono","monospace";
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
   &::before {
     content: attr(data-language);
     position: absolute;
     top: 4px;
     right: 0;
-    color: #abb2bf;
+    color: hsla(0,0%,100%,.4);
     text-align: right;
     font-size: 1em;
     padding: 6px 10px 0;
     line-height: 16px;
+  }
+  &-params {
+    color: #42b983;
   }
 }

@@ -1,10 +1,12 @@
 html, body {
   height: 100%;
   width: 100%;
+  font-size: 14px;
   font-family: 100%/1.5 "Roboto", Verdana,'Avenir', "Microsoft YaHei", "微软雅黑", "Helvetica Neue", Helvetica, Arial, sans-serif,"-apple-system","BlinkMacSystemFont","Segoe UI","Roboto";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
 button, input{outline: none;}
 button{border: 0;}

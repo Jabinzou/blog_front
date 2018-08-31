@@ -97,7 +97,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@asset/css/common.scss';
 .home{
   @media (min-width: 650px){
