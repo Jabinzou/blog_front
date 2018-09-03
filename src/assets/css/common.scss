@@ -14,6 +14,17 @@ $regular-red: #f35626;
 .clearfix{ /* 为了照顾ie6浏览器*/
   zoom:1;
 }
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.ellipse {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 //---------- animation here -------------//
 @keyframes hue {
   from {
