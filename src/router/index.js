@@ -20,6 +20,6 @@ export default new Router({
       path: '/admin/bigbang/publish',
       name: 'publish',
       component: () => import('@/admin/publish/editor')
-    },
+    }
   ]
 });

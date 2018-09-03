@@ -5,8 +5,7 @@ import App from './App';
 import router from './router';
 import animate from 'animate.css';
 import MuseUI from 'muse-ui';
-// import 'muse-ui/dist/muse-ui.css';
-// import 'muse-ui/lib/styles/base.less';
+import 'muse-ui/dist/muse-ui.css';
 import '@asset/css/reset.scss';
 
 Vue.config.productionTip = false;
