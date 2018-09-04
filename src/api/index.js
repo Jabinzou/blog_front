@@ -1,6 +1,5 @@
 import http from '../config/init';
 import Toast from 'muse-ui-toast';
-import 'material-icons/iconfont/material-icons.scss';
 const options = {
   position: 'bottom', // 弹出的位置
   time: 5000, // 显示的时长

@@ -7,6 +7,7 @@ import animate from 'animate.css';
 import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css';
 import '@asset/css/reset.scss';
+import 'material-icons/iconfont/material-icons.scss';
 
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV === 'development';
