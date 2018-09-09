@@ -11,12 +11,21 @@ const options = {
   errorIcon: 'warning' // 错误信息图标
 };
 Toast.config(options);
-export async function getList () {
+export async function getList (options) {
   try {
     const res = await http.get('/category/list', {
-      params: {
-        a: 1
-      }
+      params: options
+    });
+    return res;
+  } catch (error) {
+    console.log(error);
+    Toast.error(error.message || '联盟亡了!');
+  }
+}
+export async function getCate (options) {
+  try {
+    const res = await http.get('/category/list', {
+      params: options
     });
     return res;
   } catch (error) {

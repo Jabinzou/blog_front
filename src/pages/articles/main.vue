@@ -2,11 +2,13 @@
   <div>
     <p><strong>123</strong></p>
     <p><strong>123</strong></p>
-    <pre><code data-language="javascript" class="lang-javascript">function normal(value) {
-    console.log(this.id);
-    const error = new Error();
-    return value.replace();
-    }
+    <pre><code
+data-language="javascript"
+               class="lang-javascript">function normal(value) {
+               console.log(this.id);
+               const error = new Error();
+               return value.replace();
+               }
     </code></pre>
   </div>
 </template>
@@ -19,7 +21,7 @@ export default {
   data () {
     return {
 
-    }
+    };
   },
   async created () {
     await getList();
@@ -27,10 +29,8 @@ export default {
   mounted () {
     hljs.initHighlightingOnLoad();
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 @import '@asset/css/common.scss';
 </style>
-
-
