@@ -17,8 +17,8 @@ export default new Router({
       component: () => import('@/pages/articles/main')
     },
     {
-      path: '/admin/bigbang/publish',
-      name: 'publish',
+      path: '/admin/bigbang/main',
+      name: 'main',
       component: () => import('@/admin/publish/editor')
     }
   ]
