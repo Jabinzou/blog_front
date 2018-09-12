@@ -1,4 +1,5 @@
 'use strict';
+import CryptoJS from 'crypto-js/crypto-js';
 export function getCookie (name) {
   const regMatch = new RegExp(`${name}[^;]+`).exec(document.cookie);
   // this will match the key value expression like 'name=123' array;
@@ -11,6 +12,6 @@ export function getCookie (name) {
   // this will match the '=' front content and replace with '',then you will get the '=' after thing;
 }
 
-export function uuid () {
-  return Math.random().toString(36).slice(4);
+export function uuid (len) {
+  return CryptoJS.lib.WordArray.random(len / 2).toString().toUpperCase();
 }

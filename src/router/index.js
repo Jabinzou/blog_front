@@ -20,6 +20,10 @@ export default new Router({
       path: '/admin/bigbang/main',
       name: 'main',
       component: () => import('@/admin/publish/editor')
+    }, {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/admin/signin/login')
     }
   ]
 });

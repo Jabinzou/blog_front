@@ -28,6 +28,9 @@ $color-purple: #e040fb;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.text-center {
+  text-align: center;
+}
 //---------- animation here -------------//
 @keyframes hue {
   from {

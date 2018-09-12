@@ -11,11 +11,9 @@ const options = {
   errorIcon: 'warning' // 错误信息图标
 };
 Toast.config(options);
-export async function getList (options) {
+export async function validateUser (options) {
   try {
-    const res = await http.get('/category/list', {
-      params: options
-    });
+    const res = await http.post('/user/verify', options);
     return res;
   } catch (error) {
     console.log(error);
