@@ -64,7 +64,9 @@ export default {
         iv
       };
       const res = await validateUser(param);
-      console.log(res);
+      if (res.status === 200) {
+        this.$router.push({name: 'main'});
+      }
     }
   }
 };

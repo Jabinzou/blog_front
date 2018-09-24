@@ -31,3 +31,30 @@ export async function getCate (options) {
     Toast.error(error.message || '联盟亡了!');
   }
 }
+/**
+ * @description get all tags
+ */
+export async function getAllTags (options) {
+  try {
+    const res = await http.get('/tag/list', {
+      params: options
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
+/**
+ * @description verify token
+ */
+export async function verifyToken (val) {
+  try {
+    return await http.post('/user/promise', {
+      token: val
+    });
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
