@@ -1,17 +1,29 @@
 <template>
   <div class="publish-admin">
     <mu-container>
-      <mu-data-table
-        max-height="500"
-        stripe
-        :columns="tagColumns"
-        :data="tags">
-        <template slot-scope="scope">
-          <td class="is-center">{{ scope.row.id }}</td>
-          <td class="is-center">{{ scope.row.name }}</td>
-          <td class="is-center">{{ moment(scope.row.createAt).format('YYYY-MM-DD HH:mm') }}</td>
-        </template>
-      </mu-data-table>
+      <mu-tabs
+        :value.sync="active"
+        inverse
+        color="secondary"
+        text-color="rgba(0, 0, 0, .54)"
+        center>
+        <mu-tab>Tag(标签)</mu-tab>
+        <mu-tab>Category(分类)</mu-tab>
+      </mu-tabs>
+      <template v-if="active === 0">
+        <mu-data-table
+          max-height="700"
+          stripe
+          :columns="tagColumns"
+          :data="tags">
+          <template slot-scope="scope">
+            <td class="is-center">{{ scope.row.id }}</td>
+            <td class="is-center">{{ scope.row.name }}</td>
+            <td class="is-center">{{ moment(scope.row.createAt).format('YYYY-MM-DD HH:mm') }}</td>
+          </template>
+        </mu-data-table>
+      </template>
+
     </mu-container>
   </div>
 </template>
@@ -23,6 +35,7 @@ export default {
   data () {
     return {
       moment,
+      active: 0,
       tagColumns: [
         { title: 'id', name: 'id', width: 140, align: 'center' },
         { title: 'name', name: 'name', width: 140, align: 'center' },
