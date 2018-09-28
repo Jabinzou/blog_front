@@ -15,6 +15,17 @@
             underline-color="#f48fb1"/>
         </mu-form-item>
         <mu-form-item
+          prop="desc"
+          label="Description">
+          <mu-text-field
+            v-model="article.desc"
+            multi-line
+            :rows="2"
+            full-width
+            color="#f48fb1"
+            underline-color="#f48fb1"/>
+        </mu-form-item>
+        <mu-form-item
           prop="tag"
           label="Tag">
           <mu-select
@@ -84,6 +95,7 @@ export default {
       article: {
         title: '',
         tag: [],
+        desc: '',
         cate: '',
         content: ''
       },

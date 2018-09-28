@@ -94,7 +94,6 @@ export default {
     margin: 20px;
   }
   .publish-form {
-    width: 600px;
     padding: 30px;
     box-sizing: border-box;
     box-shadow: 4px 4px 20px $color-pink;
