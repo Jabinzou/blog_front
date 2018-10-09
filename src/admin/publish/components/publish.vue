@@ -26,13 +26,13 @@
             underline-color="#f48fb1"/>
         </mu-form-item>
         <mu-form-item
-          prop="tag"
+          prop="tagId"
           label="Tag">
           <mu-select
             filterable
             multiple
             chips
-            v-model="article.tag"
+            v-model="article.tagId"
             full-width
             underline-color="#f48fb1"
             color="#f48fb1">
@@ -44,10 +44,10 @@
           </mu-select>
         </mu-form-item>
         <mu-form-item
-          prop="cate"
+          prop="categoryId"
           label="Category">
           <mu-select
-            v-model="article.cate"
+            v-model="article.categoryId"
             filterable
             tags
             underline-color="#f48fb1"
@@ -76,13 +76,13 @@
     <div class="publish__footer">
       <mu-button
         color="indigo400"
-        @click="getIner">Publish</mu-button>
+        @click="publish">Publish</mu-button>
     </div>
   </div>
 </template>
 <script>
 import Editor from 'tui-editor';
-import { getCate } from '@api';
+import { getCate, getAllTags, publish } from '@api';
 import 'codemirror/lib/codemirror.css'; // codemirror
 import 'tui-editor/dist/tui-editor.css'; // editor ui
 import 'tui-editor/dist/tui-editor-contents.css'; // editor content
@@ -94,32 +94,17 @@ export default {
       editor: null, // editor instance
       article: {
         title: '',
-        tag: [],
+        tagId: [],
         desc: '',
-        cate: '',
+        categoryId: '',
         content: ''
       },
       exitedData: {
-        cates: [{
-          id: 1,
-          name: '123'
-        }, {
-          id: 2,
-          name: '456'
-        }],
-        tags: [{
-          id: 1,
-          name: '123'
-        }, {
-          id: 2,
-          name: '456'
-        }]
+        cates: [],
+        tags: []
       }, // 拉取对应的值
       labelPosition: 'top'
     };
-  },
-  async created () {
-    await getCate();
   },
   mounted () {
     this.editor = Editor.factory({
@@ -131,12 +116,37 @@ export default {
       exts: ['scrollSync'],
       codeBlockLanguages: ['javascript', 'css', 'html', 'typescript']
     });
+    this.getTag();
+    this.getCate();
   },
   methods: {
     getIner () {
       const lo = this.editor;
-      console.log(lo.getHtml());
-      // console.log(lo.convertor.toHTMLWithCodeHightlight())
+      this.article.content = lo.getHtml();
+    },
+    /**
+     * @description get tag
+     */
+    async getTag () {
+      const res = await getAllTags();
+      this.exitedData.tags = res.data.data.list || [];
+    },
+    /**
+     * @description get cate
+     */
+    async getCate () {
+      const res = await getCate();
+      this.exitedData.cates = res.data.data.list || [];
+    },
+    /**
+     * @description 发布文章
+     */
+    async publish () {
+      this.getIner();
+      const res = await publish(this.article);
+      if (res.data.code === 1000) {
+        this.$toast.success('发布成功!');
+      }
     }
   }
 };

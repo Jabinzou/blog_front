@@ -8,7 +8,9 @@ import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css';
 import '@asset/css/reset.scss';
 import 'material-icons/iconfont/material-icons.scss';
+import Toast from 'muse-ui-toast';
 
+Vue.use(Toast);
 Vue.config.productionTip = false;
 Vue.config.devtools = process.env.NODE_ENV === 'development';
 Vue.config.silent = process.env.NODE_ENV !== 'development';

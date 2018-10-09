@@ -3,7 +3,6 @@
 import axios from 'axios';
 import config from '../config/http';
 import * as md5 from 'md5';
-
 axios.defaults.headers.common['Cache-Control'] = 'private, no-store';
 // axios.defaults.headers.common['pass-token'] = '';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -24,15 +23,12 @@ http.interceptors.request.use(
     return Promise.reject(err);
   }
 );
-// http.interceptors.response.use(
-//   response => {
-//     return response;
-//   },
-//   error => {
-//     const { status, data} = error.response;
-//     return Promise.reject(
-//       error.response ? Object.assign({ status }, data) : { message: 'something wrong' }
-//     )
-//   }
-// )
+http.interceptors.response.use(
+  response => {
+    return response;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 export default http;

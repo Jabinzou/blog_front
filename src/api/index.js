@@ -1,5 +1,6 @@
 import http from '../config/init';
 import Toast from 'muse-ui-toast';
+import { getCookie } from '../utils/normal';
 const options = {
   position: 'bottom', // 弹出的位置
   time: 5000, // 显示的时长
@@ -20,6 +21,7 @@ export async function validateUser (options) {
     Toast.error(error.message || '联盟亡了!');
   }
 }
+// ------------------ category ----------------- //
 export async function getCate (options) {
   try {
     const res = await http.get('/category/list', {
@@ -31,6 +33,33 @@ export async function getCate (options) {
     Toast.error(error.message || '联盟亡了!');
   }
 }
+/**
+ * @description 删除分类
+ * @param {*} options
+ */
+export async function deleteCate (options) {
+  try {
+    const res = await http.post('/category/delete', options);
+    return res;
+  } catch (error) {
+    console.log(error);
+    Toast.error(error.message || '联盟亡了!');
+  }
+}
+/**
+ * @description 添加分类
+ */
+export async function addCate (options) {
+  try {
+    const param = Object.assign({}, options, {userId: getCookie('tag')});
+    const res = await http.post('/category/add', param);
+    return res;
+  } catch (error) {
+    console.log(error);
+    Toast.error(error.message || '联盟亡了!');
+  }
+}
+// ------------------ tag ----------------- //
 /**
  * @description get all tags
  */
@@ -46,6 +75,31 @@ export async function getAllTags (options) {
   }
 }
 /**
+ * @description 添加tag
+ */
+export async function addTag (options) {
+  try {
+    const params = Object.assign({}, options, {userId: getCookie('tag')});
+    const res = await http.post('/tag/add', params);
+    return res;
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
+/**
+ * @description 删除tag
+ */
+export async function deleteTag (options) {
+  try {
+    const res = await http.post('/tag/delete', options);
+    return res;
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
+/**
  * @description verify token
  */
 export async function verifyToken (val) {
@@ -53,6 +107,17 @@ export async function verifyToken (val) {
     return await http.post('/user/promise', {
       token: val
     });
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
+// ------------------- article ------------------------ //
+export async function publish (options) {
+  try {
+    const param = Object.assign({}, options, {userId: getCookie('tag')});
+    const res = await http.post('/article/add', param);
+    return res;
   } catch (err) {
     console.log(err);
     Toast.error(err.message || '联盟亡了!');

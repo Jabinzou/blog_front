@@ -123,7 +123,8 @@
 </template>
 <script>
 import moment from 'moment';
-import { getAllTags } from '@api';
+import { getAllTags, getCate, addTag, deleteTag, addCate, deleteCate } from '@api';
+import { getCookie } from '../../../utils/normal';
 export default {
   name: 'Setting',
   data () {
@@ -156,20 +157,78 @@ export default {
   watch: {
     active (val) {
       this.selects = [];
+      if (+val === 0) {
+        this.getTag();
+      } else if (+val === 1) {
+        this.getCate();
+      }
+    }
+  },
+  computed: {
+    deleteArr () {
+      const arr = [];
+      if (+this.active === 0) {
+        this.tags.forEach((item, index) => {
+          if (this.selects.includes(index)) {
+            arr.push(item.id);
+          }
+        });
+      } else if (+this.active === 1) {
+        const tag = getCookie('tag');
+        this.cateData.forEach((item, index) => {
+          if (this.selects.includes(index)) {
+            arr.push({id: item.id, user: +tag});
+          }
+        });
+      }
+      return arr;
     }
   },
   methods: {
     /**
      * @description 添加标签或者分类
      */
-    addContent () {
-
+    async addContent () {
+      const params = {
+        name: this.contentInput.name
+      };
+      if (+this.active === 0) {
+        const res = await addTag(params);
+        if (res.data.code === 1000) {
+          this.openAlert = false;
+          this.$toast.success('添加标签成功!');
+          await this.getTag();
+        }
+      } else if (+this.active === 1) {
+        const res = await addCate(params);
+        if (res.data.code === 1000) {
+          this.openAlert = false;
+          this.$toast.success('添加分类成功!');
+          await this.getCate();
+        }
+      }
     },
     /**
      * @description 删除确认
      */
-    deleteConfirm (val) {
-
+    async deleteConfirm () {
+      if (+this.active === 0) {
+        const res = await deleteTag(this.deleteArr);
+        if (res.data.code === 1000) {
+          this.selects = [];
+          this.operateAlert = false;
+          this.$toast.success('删除标签成功!');
+          await this.getTag();
+        }
+      } else if (+this.active === 1) {
+        const res = await deleteCate(this.deleteArr);
+        if (res.data.code === 1000) {
+          this.selects = [];
+          this.operateAlert = false;
+          this.$toast.success('删除分类成功!');
+          await this.getCate();
+        }
+      }
     },
     /**
      * @description 获取标签列表
@@ -177,6 +236,13 @@ export default {
     async getTag () {
       const res = await getAllTags();
       this.tags = res.data.data.list || [];
+    },
+    /**
+     * @description 获取分类
+     */
+    async getCate () {
+      const res = await getCate();
+      this.cateData = res.data.data.list || [];
     }
   },
   created () {
