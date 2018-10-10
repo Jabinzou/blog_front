@@ -19,6 +19,12 @@ const router = new Router({
       component: () => import('@/pages/articles/main')
     },
     {
+      path: '/detail/:id',
+      name: 'detail',
+      append: true,
+      component: () => import('@/pages/articles/detail')
+    },
+    {
       path: '/admin/bigbang/main',
       name: 'main',
       component: () => import('@/admin/publish/editor')

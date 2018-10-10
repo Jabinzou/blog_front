@@ -1,33 +1,29 @@
 <template>
   <div>
-    <p><strong>123</strong></p>
-    <p><strong>123</strong></p>
-    <pre><code
-data-language="javascript"
-               class="lang-javascript">function normal(value) {
-               console.log(this.id);
-               const error = new Error();
-               return value.replace();
-               }
-    </code></pre>
+    <h1>123123</h1>
   </div>
 </template>
 <script>
-import { getList } from '@api';
-import 'highlight.js/styles/atom-one-dark.css';
-import hljs from 'highlight.js';
-import '@asset/css/highlight.scss';
+import { getArticle } from '@api';
 export default {
   data () {
     return {
-
+      list: {
+        count: 0,
+        list: []
+      }
     };
   },
-  async created () {
-    await getList();
+  created () {
+    this.getList();
   },
   mounted () {
-    hljs.initHighlightingOnLoad();
+  },
+  methods: {
+    async getList () {
+      const res = await getArticle(null);
+      this.list = res.data.data;
+    }
   }
 };
 </script>

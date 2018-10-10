@@ -123,3 +123,31 @@ export async function publish (options) {
     Toast.error(err.message || '联盟亡了!');
   }
 }
+/**
+ * @description 获取文章列表
+ */
+export async function getArticle (options) {
+  try {
+    const res = await http.get('/article/list', {
+      params: options
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
+/**
+ * @description 获取详情
+ */
+export async function getDetail (options) {
+  try {
+    const res = await http.get('/article/detail', {
+      params: options
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+    Toast.error(err.message || '联盟亡了!');
+  }
+}
