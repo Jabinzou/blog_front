@@ -14,7 +14,7 @@
         </mu-badge>
       </li>
       <li>
-        <p>powered by
+        <p>Powered by
           <a
             href="https://cn.vuejs.org/"
             class="green">vue</a>

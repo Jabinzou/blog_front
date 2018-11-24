@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import animate from 'animate.css';
+import 'animate.css';
 import MuseUI from 'muse-ui';
 import '@asset/font/iconfont.css';
 import 'muse-ui/dist/muse-ui.css';

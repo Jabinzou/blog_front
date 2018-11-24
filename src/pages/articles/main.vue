@@ -3,25 +3,29 @@
     <top-bar
       class="fixed"/>
     <div class="art-body">
-      <h1>
-        Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Magnam minima perferendis neque
-        nostrum ipsum ea obcaecati accusamus aut, vero, quisquam harum consequatur,
-        magni blanditiis. Deleniti architecto eum amet illo magni?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis fuga numquam assumenda inventore optio quibusdam quaerat odio maxime dolores quia. Mollitia totam nostrum ipsum nemo eum non expedita sapiente laboriosam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad mollitia ex pariatur error quam. Sit architecto officiis esse, iusto voluptates sequi dolorum rem perferendis magni voluptatum consequuntur. Dignissimos, illum maiores!
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur minima esse perferendis, totam repellendus placeat illo natus, iste ullam quos omnis dolorem nam sit quam nobis aspernatur inventore facere. Non.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, reprehenderit quia tempore libero veritatis, quas ullam, pariatur placeat cumque eius assumenda dicta aliquid doloribus ducimus iusto nam. Nihil, quisquam eum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi aperiam assumenda libero dolorem, quo quas animi nemo nulla ullam unde rerum cupiditate excepturi eligendi quae quidem, odio laudantium iusto cumque.
-      </h1>
+      <div class="body-content">
+        <transition-group
+          tag="div"
+          name="article-container"
+          enter-active-class="animated bounceInLeft"
+          leave-active-class="animated fadeOut">
+          <Article-card
+            v-if="list.list.length"
+            :style-lint="{'animation-delay': index * 300 + 'ms'}"
+            v-for="(item, index) in list.list"
+            :article="item"
+            :key="JSON.stringify(item)"/>
+        </transition-group>
+      </div>
+      <bot-bar/>
     </div>
-    <bot-bar/>
   </div>
 </template>
 <script>
 import { getArticle } from '@api';
 import topBar from '@/components/topBar';
 import botBar from '@/components/bottomBar';
+import ArticleCard from './components/card';
 export default {
   data () {
     return {
@@ -44,7 +48,8 @@ export default {
   },
   components: {
     topBar,
-    botBar
+    botBar,
+    ArticleCard
   }
 };
 </script>
@@ -57,10 +62,16 @@ export default {
     width: 100%;
     top: 0;
   }
+  .article-container-move {
+    transition: transform 500ms 1s;
+  }
+  .body-content {
+    min-height: calc(100% - 150px);
+  }
   .art-body {
     box-sizing: border-box;
-    margin-top: 64px;
-    min-height: calc(100% - 214px);
+    padding-top: 64px;
+    height: 100%;
     overflow: auto;
   }
 }
