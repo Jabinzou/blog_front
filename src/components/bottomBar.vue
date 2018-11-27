@@ -20,7 +20,7 @@
             class="green">vue</a>
           and
           <a
-            href="https://cn.vuejs.org/"
+            href="https://nestjs.com/"
             class="red">nestjs</a>
         </p>
       </li>

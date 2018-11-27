@@ -145,7 +145,12 @@ export async function getDetail (options) {
     const res = await http.get('/article/detail', {
       params: options
     });
-    return res;
+    const {data} = res;
+    if (data.code === 1000 && data.data) {
+      return data.data;
+    } else {
+      Toast.error('拉取详情数据格式错误!');
+    }
   } catch (err) {
     console.log(err);
     Toast.error(err.message || '联盟亡了!');

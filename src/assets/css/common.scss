@@ -4,7 +4,9 @@ $nomal-back: #ffffff;
 $normal-color: #333;
 $regular-red: #f35626;
 $color-pink:#ff4081;
-$color-pink-light: #f48fb1;
+$color-gray: #999;
+$color-g: #888;
+$color-pink-light: #f06292;
 $color-purple: #e040fb;
 $color-black: #424242;
 $color-green: #4fc08d;
@@ -25,6 +27,9 @@ $color-nest: #ea2845;
 }
 .right {
   float: right;
+}
+.pointer {
+  cursor: pointer;
 }
 .ellipse {
   white-space: nowrap;

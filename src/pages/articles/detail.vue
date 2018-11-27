@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <p><strong>123</strong></p>
-    <p><strong>123</strong></p>
-    <pre><code
-data-language="javascript"
-               class="lang-javascript">function normal(value) {
-               console.log(this.id);
-               const error = new Error();
-               return value.replace();
-               }
-    </code></pre>
-  </div>
+  <div
+    v-html="content"
+    class="article-detail"/>
 </template>
 <script>
 import { getDetail } from '@api';
 import 'highlight.js/styles/atom-one-dark.css';
-import hljs from 'highlight.js';
 import '@asset/css/highlight.scss';
+import '@asset/css/markdown.scss';
+import hljs from 'highlight';
+const highlightCode = () => {
+  const preEl = document.querySelectorAll('pre');
+  preEl.forEach((el) => {
+    hljs.highlightBlock(el);
+  });
+};
 export default {
   data () {
     return {
@@ -24,19 +22,35 @@ export default {
     };
   },
   created () {
-    this.getDetail();
+    highlightCode();
   },
   mounted () {
-    hljs.initHighlightingOnLoad();
+    this.getDetail();
+  },
+  updated () {
+    highlightCode();
   },
   methods: {
     async getDetail () {
-      const param = this.$router.query;
-      this.content = await getDetail(param);
+      const param = this.$route.params;
+      const result = await getDetail(param);
+      this.content = result.content || '';
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import '@asset/css/common.scss';
+// @import '@asset/css/common.scss';
+
+.article-detail {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 10px 16px;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .article-detail {
+    width: 75%;
+  }
+}
 </style>

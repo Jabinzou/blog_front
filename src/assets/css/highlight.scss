@@ -1,10 +1,9 @@
 /*
 * other code style
 */
-
+@charset "UTF-8";
 .hljs {
   position: relative;
-  border-radius: 4px;
   color: #ccc;
   font-family: "Consolas","Monaco","Andale Mono","Ubuntu Mono","monospace";
   text-align: left;
@@ -12,7 +11,7 @@
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  &::before {
+  code::before {
     content: attr(data-language);
     position: absolute;
     top: 4px;

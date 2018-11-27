@@ -1,0 +1,223 @@
+.article-detail *:not(table) {
+  line-height: 160%;
+  box-sizing: content-box;
+}
+
+.article-detail i,
+.article-detail cite,
+.article-detail em,
+.article-detail var,
+.article-detail address,
+.article-detail dfn {
+  font-style: italic;
+}
+
+.article-detail strong {
+  font-weight: bold;
+}
+
+.article-detail p {
+  margin: 10px 0;
+  color: #555;
+}
+
+.article-detail > h1:first-of-type,
+.article-detail > div > div:first-of-type h1 {
+    margin-top: 14px;
+}
+
+.article-detail h1,
+.article-detail h2,
+.article-detail h3,
+.article-detail h5 {
+  font-weight: bold;
+}
+
+.article-detail h1 {
+  font-size: 1.6rem;
+  line-height: 28px;
+  border-bottom: 3px double #999;
+  margin: 52px 0 15px 0;
+  padding-bottom: 7px;
+  color: #000;
+}
+
+.article-detail h2 {
+  font-size: 1.3rem;
+  line-height: 23px;
+  border-bottom: 1px solid #dbdbdb;
+  margin: 30px 0 13px 0;
+  padding-bottom: 7px;
+  color: #333;
+}
+
+.article-detail h3,
+.article-detail h4 {
+  font-size: 1.2rem;
+  line-height: 18px;
+  margin: 20px 0 2px;
+  color: #333;
+}
+
+.article-detail h5,
+.article-detail h6 {
+  font-size: 1rem;
+  line-height: 17px;
+  margin: 10px 0 -4px;
+  color: #333;
+}
+
+.article-detail blockquote {
+  margin: 15px 0;
+}
+
+.article-detail blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+
+.article-detail blockquote > :first-child {
+  margin-top: 0;
+}
+
+.article-detail  blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.article-detail pre,
+.article-detail code {
+  font-family: Consolas, Courier, "Apple SD 산돌고딕 Neo", -apple-system, "Lucida Grande", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "Segoe UI", "돋움", dotum, sans-serif;
+  border: 0;
+  border-radius: 0;
+}
+
+.article-detail pre {
+  border-radius: 4px;
+  margin: 2px 0 8px;
+  padding: 18px;
+  background-color: #282c34;
+}
+
+.article-detail code {
+  color: #c1788b;
+  padding: 4px 4px 2px 0;
+  letter-spacing: -0.3px;
+}
+
+.article-detail pre code {
+  padding: 0;
+  color: inherit;
+  background-color: transparent;
+}
+
+.article-detail pre.addon {
+  border: 1px solid #e8ebed;
+  background-color: #fff;
+}
+
+.article-detail img {
+  margin: 4px 0 10px;
+  box-sizing: border-box;
+  vertical-align: top;
+  max-width: 100%;
+}
+
+.article-detail table {
+  width: 100%;
+  margin: 2px 0 14px;
+  color: #555;
+  border-collapse: collapse;
+  box-sizing: border-box;
+}
+
+.article-detail table th,
+.article-detail table td {
+  height: 32px;
+  padding: 5px 14px 5px 12px;
+}
+
+.article-detail table td {
+  border: 1px solid #eaeaea;
+}
+
+.article-detail table th {
+  border: 1px solid #72777b;
+  border-top: 0;
+  background-color: #7b8184;
+  font-weight: 300;
+  color: #fff;
+  padding-top: 6px;
+}
+
+.article-detail ul,
+.article-detail menu,
+.article-detail ol,
+.article-detail dir {
+  display: block;
+  list-style-type: disc;
+  padding-left: 17px;
+  margin: 6px 0 10px;
+  color: #555;
+}
+
+.article-detail ol {
+  list-style-type: decimal;
+}
+
+.article-detail ul ul,
+.article-detail ul ol,
+.article-detail ol ol,
+.article-detail ol ul {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.article-detail ul li {
+  position: relative;
+}
+
+.article-detail ul p, ol p {
+  margin: 0;
+}
+
+.article-detail ul li.task-list-item:before,
+.article-detail pre ul li:before {
+  content: "";
+}
+
+.article-detail hr {
+  border-top: 1px solid #eee;
+  margin: 16px 0;
+}
+
+.article-detail a {
+  text-decoration: underline;
+  color: #5286bc;
+}
+
+.article-detail a:hover {
+  color: #007cff;
+}
+
+.article-detail .task-list-item {
+  border: 0;
+  list-style: none;
+  padding-left: 22px;
+  margin-left: -22px;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: 0 2px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAADdJREFUKBVjvHv37n8GMgALSI+SkhJJWu/du8fARJIOJMWjGpECA505GjjoIYLEB6dVUNojFQAA/1MJUFWet/4AAAAASUVORK5CYII=');
+}
+
+.article-detail .task-list-item.checked {
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAMpJREFUKBVjjJ/64D8DGYCJDD1gLbTVyM3OxJDiJMzAxcYIdyALnIWDAdJU7i/OICfCxsDMxMgwc88bwk5F1vTs/W+GFUffwY2H+1FBlI2hLliCQYCbGSyJrqlzwwuGj9//YWoMtRBgUBJnZ6gMEGeQFWaFOw9kE7omkG5GWDyCPF7mJ86gIMbO8P//fwZGRkYGXJpAGuFO/fbrP0PXppcMD179JKgJRSOIA9N8/NZXrM4DqYEBjOgAaYYFOUwRNhruVGyS+MTI1ggAx8NTGcUtFVQAAAAASUVORK5CYII=');
+}
+
+.article-detail .task-list-item input[type='checkbox'],
+.article-detail .task-list-item .task-list-item-checkbox {
+  margin-left: -17px;
+  margin-right: 3.8px;
+  margin-top: 3px;
+}
