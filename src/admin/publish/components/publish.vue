@@ -1,78 +1,88 @@
 <template>
   <div>
-    <div class="publish-form">
-      <mu-form
-        :model="article"
-        class="mu-demo-form"
-        :label-position="labelPosition"
-        label-width="100">
-        <mu-form-item
-          prop="title"
-          label="Title">
-          <mu-text-field
-            v-model="article.title"
-            color="#f48fb1"
-            underline-color="#f48fb1"/>
-        </mu-form-item>
-        <mu-form-item
-          prop="desc"
-          label="Description">
-          <mu-text-field
-            v-model="article.desc"
-            multi-line
-            :rows="2"
-            full-width
-            color="#f48fb1"
-            underline-color="#f48fb1"/>
-        </mu-form-item>
-        <mu-form-item
-          prop="tagId"
-          label="Tag">
-          <mu-select
-            filterable
-            multiple
-            chips
-            v-model="article.tagId"
-            full-width
-            underline-color="#f48fb1"
-            color="#f48fb1">
-            <mu-option
-              v-for="(tag, index) in exitedData.tags"
-              :key="index"
-              :label="tag.name"
-              :value="tag.id"/>
-          </mu-select>
-        </mu-form-item>
-        <mu-form-item
-          prop="categoryId"
-          label="Category">
-          <mu-select
-            v-model="article.categoryId"
-            filterable
-            tags
-            underline-color="#f48fb1"
-            color="#e040fb">
-            <mu-option
-              v-for="(item, index) in exitedData.cates"
-              :key="index"
-              :label="item.name"
-              :value="item.id">
-              <mu-list-item-action avatar>
-                <mu-avatar
-                  :size="22"
-                  color="#e040fb">
-                  {{ item.name.substring(0, 1) }}
-                </mu-avatar>
-              </mu-list-item-action>
-              <mu-list-item-content>
-                <mu-list-item-title>{{ item.name }}</mu-list-item-title>
-              </mu-list-item-content>
-            </mu-option>
-          </mu-select>
-        </mu-form-item>
-      </mu-form>
-    </div>
-    <div id="editor"/>
+    <mu-expansion-panel
+      :expand="panel === 'panel1'"
+      @change="toggle('panel1')">
+      <div slot="header">文章信息</div>
+      <div class="publish-form">
+        <mu-form
+          :model="article"
+          class="mu-demo-form"
+          :label-position="labelPosition"
+          label-width="100">
+          <mu-form-item
+            prop="title"
+            label="Title">
+            <mu-text-field
+              v-model="article.title"
+              color="#f48fb1"
+              underline-color="#f48fb1"/>
+          </mu-form-item>
+          <mu-form-item
+            prop="desc"
+            label="Description">
+            <mu-text-field
+              v-model="article.desc"
+              multi-line
+              :rows="2"
+              full-width
+              color="#f48fb1"
+              underline-color="#f48fb1"/>
+          </mu-form-item>
+          <mu-form-item
+            prop="tagId"
+            label="Tag">
+            <mu-select
+              filterable
+              multiple
+              chips
+              v-model="article.tagId"
+              full-width
+              underline-color="#f48fb1"
+              color="#f48fb1">
+              <mu-option
+                v-for="(tag, index) in exitedData.tags"
+                :key="index"
+                :label="tag.name"
+                :value="tag.id"/>
+            </mu-select>
+          </mu-form-item>
+          <mu-form-item
+            prop="categoryId"
+            label="Category">
+            <mu-select
+              v-model="article.categoryId"
+              filterable
+              tags
+              underline-color="#f48fb1"
+              color="#e040fb">
+              <mu-option
+                v-for="(item, index) in exitedData.cates"
+                :key="index"
+                :label="item.name"
+                :value="item.id">
+                <mu-list-item-action avatar>
+                  <mu-avatar
+                    :size="22"
+                    color="#e040fb">
+                    {{ item.name.substring(0, 1) }}
+                  </mu-avatar>
+                </mu-list-item-action>
+                <mu-list-item-content>
+                  <mu-list-item-title>{{ item.name }}</mu-list-item-title>
+                </mu-list-item-content>
+              </mu-option>
+            </mu-select>
+          </mu-form-item>
+        </mu-form>
+      </div>
+    </mu-expansion-panel>
+    <mu-expansion-panel
+      :expand="panel === 'panel2'"
+      @change="toggle('panel2')">
+      <div slot="header">文章内容</div>
+      <div id="editor"/>
+    </mu-expansion-panel>
     <div class="publish__footer">
       <mu-button
         color="indigo400"
@@ -92,6 +102,7 @@ export default {
   data () {
     return {
       editor: null, // editor instance
+      panel: 'panel1', // 展开编辑
       article: {
         title: '',
         tagId: [],
@@ -113,13 +124,15 @@ export default {
       previewStyle: 'vertical',
       height: '600px',
       language: 'zh',
-      exts: ['scrollSync'],
-      codeBlockLanguages: ['javascript', 'css', 'html', 'typescript']
+      exts: ['scrollSync']
     });
     this.getTag();
     this.getCate();
   },
   methods: {
+    toggle (panel) {
+      this.panel = panel === this.panel ? '' : panel;
+    },
     getIner () {
       const lo = this.editor;
       this.article.content = lo.getHtml();

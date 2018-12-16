@@ -11,7 +11,7 @@
         <transition-group
           tag="div"
           name="article-container"
-          enter-active-class="animated bounceInLeft"
+          enter-active-class="animated fadeInUp"
           leave-active-class="animated fadeOut">
           <Article-card
             v-if="list.list.length"
@@ -42,7 +42,7 @@ import { getArticle } from '@api';
 import topBar from '@/components/topBar';
 import botBar from '@/components/bottomBar';
 import ArticleCard from './components/card';
-import {addEvent} from '@/utils/normal';
+import {addEvent, removeEvent} from '@/utils/normal';
 export default {
   data () {
     return {
@@ -74,6 +74,13 @@ export default {
       addEvent(el, 'scroll', function () {
         self.backTop = self.$refs.contentBody.scrollTop;
       });
+    });
+  },
+  beforeDestroy () {
+    const el = this.$refs.contentBody;
+    const self = this;
+    removeEvent(el, 'scroll', function () {
+      self.backTop = self.$refs.contentBody.scrollTop;
     });
   },
   methods: {

@@ -31,3 +31,15 @@ export const addEvent = function (element, event, handler) {
     }
   };
 };
+/**
+ * @description 解除绑定
+ */
+export const removeEvent = function (ele, str, fn) {
+  if (ele.removeEventListener) {
+    ele.removeEventListener(str, fn);
+  } else if (ele.detachEvent) {
+    ele.detachEvent('on' + str, fn);
+  } else {
+    ele['on' + str] = null;
+  }
+};

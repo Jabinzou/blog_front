@@ -7,6 +7,7 @@ import 'animate.css';
 import MuseUI from 'muse-ui';
 import '@asset/font/iconfont.css';
 import 'muse-ui/dist/muse-ui.css';
+import '@asset/css/reset.scss';
 import 'material-icons/iconfont/material-icons.scss';
 import Toast from 'muse-ui-toast';
 
