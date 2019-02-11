@@ -9,6 +9,10 @@ const router = new Router({
   mode: 'history',
   routes: [
     {
+      path: '*',
+      component: () => import('@/pages/home')
+    },
+    {
       path: '/',
       name: 'home',
       component: () => import('@/pages/home')
