@@ -8,7 +8,7 @@
     <div class="timeline">
       <span class="time pointer">
         <i class="iconfont icon-time"/>
-        {{ moment(article.createdAt).format('YYYY-MM-DD') }}
+        {{ moment(article.createAt).format('YYYY-MM-DD') }}
       </span>
       <span class="cate pointer">
         <i class="iconfont icon-category"/>
@@ -43,7 +43,7 @@ export default {
       type: Object,
       default: () => {
         return {
-          createdAt: '',
+          createAt: '',
           title: '',
           category: {},
           desc: '',
