@@ -44,7 +44,7 @@ import { getDetail } from '@api';
 import 'highlight.js/styles/atom-one-dark.css';
 import '@asset/css/highlight.scss';
 import '@asset/css/markdown.scss';
-import hljs from 'highlight';
+import hljs from 'highlight.js';
 import botBar from '../../components/bottomBar';
 import {addEvent, removeEvent} from '@/utils/normal';
 import Toast from 'muse-ui-toast';
