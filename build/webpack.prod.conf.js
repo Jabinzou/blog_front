@@ -31,6 +31,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     //   'process.env': env
     // }),
     new UglifyJsPlugin({
+      extractComments: true,
       uglifyOptions: {
         compress: {
           warnings: false

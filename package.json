@@ -10,7 +10,8 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "cross-env NODE_ENV=production node build/build.js",
-    "build:dev": "cross-env NODE_ENV=development node build/build.js"
+    "build:dev": "cross-env NODE_ENV=development node build/build.js",
+    "analyz": "NODE_ENV=production npm_config_report=true npm run build"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
@@ -41,6 +42,7 @@
     "babel-preset-env": "^1.3.2",
     "babel-preset-stage-2": "^6.22.0",
     "chalk": "^2.0.1",
+    "compression-webpack-plugin": "^1.1.12",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.0",
