@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-publish">
     <mu-expansion-panel
       :expand="panel === 'panel1'"
       @change="toggle('panel1')">
@@ -81,7 +81,10 @@
       :expand="panel === 'panel2'"
       @change="toggle('panel2')">
       <div slot="header">文章内容</div>
-      <div id="editor"/>
+      <quill-editor
+        ref="myTextEditor"
+        id="rich-editor"
+        v-model="article.content"/>
     </mu-expansion-panel>
     <div class="publish__footer">
       <mu-button
@@ -91,12 +94,8 @@
   </div>
 </template>
 <script>
-import Editor from 'tui-editor';
+import quillEditor from './richEditor';
 import { getCate, getAllTags, publish } from '@api';
-import 'codemirror/lib/codemirror.css'; // codemirror
-import 'tui-editor/dist/tui-editor.css'; // editor ui
-import 'tui-editor/dist/tui-editor-contents.css'; // editor content
-import 'highlight.js/styles/atom-one-dark.css'; // editor code block css
 export default {
   name: 'Publish',
   data () {
@@ -117,25 +116,16 @@ export default {
       labelPosition: 'top'
     };
   },
+  components: {
+    quillEditor
+  },
   mounted () {
-    this.editor = Editor.factory({
-      el: document.querySelector('#editor'),
-      initialEditType: 'markdown',
-      previewStyle: 'vertical',
-      height: '600px',
-      language: 'zh',
-      exts: ['scrollSync']
-    });
     this.getTag();
     this.getCate();
   },
   methods: {
     toggle (panel) {
       this.panel = panel === this.panel ? '' : panel;
-    },
-    getIner () {
-      const lo = this.editor;
-      this.article.content = lo.getHtml();
     },
     /**
      * @description get tag
@@ -155,7 +145,6 @@ export default {
      * @description 发布文章
      */
     async publish () {
-      this.getIner();
       const res = await publish(this.article);
       if (res.data.code === 1000) {
         this.$toast.success('发布成功!');
@@ -164,6 +153,10 @@ export default {
   }
 };
 </script>
-<style lang="sass">
-
+<style lang="scss">
+.blog-publish {
+  #rich-editor {
+    height: 600px;
+  }
+}
 </style>
