@@ -3,7 +3,7 @@
     <div class="home__wrap">
       <h1 class="mega">Jabinzou</h1>
       <h2>An Explorer In The Vast Universe</h2>
-      <ul class="clearfix">
+      <ul class="clearfix board-ground">
         <li
           v-for="(item, index) in routerList"
           :key="index">
@@ -104,6 +104,15 @@ export default {
     .mega {
       font-size: 2.4rem;
       line-height: 1;
+    }
+  }
+  @media (max-width: 650px) {
+    .board-ground {
+      li {
+        float: none;
+        margin: 0 !important;
+        line-height: 34px;
+      }
     }
   }
   h1{

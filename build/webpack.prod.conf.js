@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const constant = require('./external')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -66,6 +67,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         : config.build.index,
       favicon: path.resolve(__dirname, '../static/favicon.ico'),
       template: 'index.ejs',
+      externals: constant.constant,
+      env: process.env.NODE_ENV,
       inject: true,
       minify: {
         removeComments: true,

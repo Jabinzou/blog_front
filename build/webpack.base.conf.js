@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const constant = require('./external')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -25,14 +26,7 @@ module.exports = {
     app: ['babel-polyfill', './src/main.js'],
     vendor: ['vue', 'quill', 'muse-ui']
   },
-  externals: {
-    vue: 'Vue',
-    'vue-router': 'VueRouter',
-    'muse-ui': 'MuseUI',
-    jquery: 'jQuery',
-    'highlight': 'hljs',
-    'quill': 'Quill'
-  },
+  externals: process.env.NODE_ENV === 'production' ? constant.externals: {},
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -43,7 +37,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
+      'vue': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
       '@asset': resolve('src/assets'),
       '@api': resolve('src/api')

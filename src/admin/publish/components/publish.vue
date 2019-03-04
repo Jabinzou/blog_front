@@ -84,6 +84,7 @@
       <quill-editor
         ref="myTextEditor"
         id="rich-editor"
+        :options="options"
         v-model="article.content"/>
     </mu-expansion-panel>
     <div class="publish__footer">
@@ -94,8 +95,13 @@
   </div>
 </template>
 <script>
+import hljs from 'highlight.js';
 import quillEditor from './richEditor';
+
 import { getCate, getAllTags, publish } from '@api';
+hljs.configure({ // optionally configure hljs
+  languages: ['javascript', 'python', 'shell', 'nginx', 'css', 'json']
+});
 export default {
   name: 'Publish',
   data () {
@@ -113,7 +119,14 @@ export default {
         cates: [],
         tags: []
       }, // 拉取对应的值
-      labelPosition: 'top'
+      labelPosition: 'top',
+      options: {
+        modules: {
+          syntax: {
+            highlight: text => hljs.highlightAuto(text).value
+          }
+        }
+      }
     };
   },
   components: {

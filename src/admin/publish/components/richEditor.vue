@@ -5,10 +5,13 @@
   </div>
 </template>
 <script>
-import Quill from 'quill';
-import hljs from 'highlight.js';
-import 'quill/dist/quill.snow.css';
+import 'highlight.js/styles/atom-one-light.css';
+import 'highlight.js';
 import options from './constant.js';
+import Quill from 'quill';
+import 'quill/dist/quill.snow.css';
+import { deepMerge } from '@/utils/normal';
+
 export default {
   name: 'QuillEditor',
   props: {
@@ -24,18 +27,17 @@ export default {
     content: {
       type: String,
       default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
       defaultOptions: {
-        modules: {
-          syntax: {
-            highlight: text => hljs.highlightAuto(text).value
-          }
-        }
       },
-      quill: null,
+      // quill: null,
       contentValue: ''
     };
   },
@@ -64,7 +66,7 @@ export default {
     initialize () {
       if (this.$el) {
         // Options
-        this.defaultOptions = Object.assign({}, options, this.options);
+        this.defaultOptions = deepMerge(this.options, options);
         // Instance
         this.quill = new Quill(this.$refs.editor, this.defaultOptions);
 
