@@ -96,6 +96,7 @@
   border-radius: 4px;
   margin: 2px 0 8px;
   padding: 18px;
+  color: #fff;
   background-color: #282c34;
 }
 
@@ -117,10 +118,12 @@
 }
 
 .article-detail img {
+  display: inline-block;
   margin: 4px 0 10px;
   box-sizing: border-box;
   vertical-align: top;
   max-width: 100%;
+  box-shadow: 0 18px 32px -18px #000;
 }
 
 .article-detail table {

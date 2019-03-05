@@ -87,17 +87,44 @@
         :options="options"
         v-model="article.content"/>
     </mu-expansion-panel>
+    <mu-dialog
+      width="360"
+      transition="slide-bottom"
+      fullscreen
+      :append-body="false"
+      :scrollable="true"
+      :open.sync="openFullscreen">
+      <mu-appbar
+        color="primary"
+        title="预览模式">
+        <mu-button
+          slot="left"
+          icon
+          @click="openFullscreen=false">
+          <mu-icon value="close"/>
+        </mu-button>
+        <mu-button
+          slot="right"
+          flat
+          @click="openFullscreen=false">
+          Done
+        </mu-button>
+      </mu-appbar>
+      <Preview :content="article.content"/>
+    </mu-dialog>
     <div class="publish__footer">
       <mu-button
         color="indigo400"
         @click="publish">Publish</mu-button>
+      <mu-button
+        @click="openFullscreen=true">preview</mu-button>
     </div>
   </div>
 </template>
 <script>
 import hljs from 'highlight.js';
 import quillEditor from './richEditor';
-
+import Preview from './preview';
 import { getCate, getAllTags, publish } from '@api';
 hljs.configure({ // optionally configure hljs
   languages: ['javascript', 'python', 'shell', 'nginx', 'css', 'json']
@@ -108,6 +135,7 @@ export default {
     return {
       editor: null, // editor instance
       panel: 'panel1', // 展开编辑
+      openFullscreen: false, // 预览窗口
       article: {
         title: '',
         tagId: [],
@@ -130,7 +158,8 @@ export default {
     };
   },
   components: {
-    quillEditor
+    quillEditor,
+    Preview
   },
   mounted () {
     this.getTag();
@@ -166,7 +195,15 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.mu-appbar {
+  position: fixed;
+  width: 100%;
+}
+/deep/ .mu-dialog-body {
+  width: 100%;
+  max-height: 100% !important;
+}
 .blog-publish {
   #rich-editor {
     height: 600px;
