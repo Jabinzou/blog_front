@@ -1,3 +1,6 @@
+
+[![Build Status](https://www.travis-ci.org/Jabinzou/blog_front.svg?branch=master)](https://www.travis-ci.org/Jabinzou/blog_front.svg?branch=master)
+
 # blog_front
 
 > blog front end
