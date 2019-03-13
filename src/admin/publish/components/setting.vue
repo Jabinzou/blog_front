@@ -251,7 +251,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .publish-admin {
   .publish-tool {
     margin: 16px;

@@ -1,0 +1,1 @@
+export const LOCAL_ARTICLE = 'LOCAL_ARTICLE';

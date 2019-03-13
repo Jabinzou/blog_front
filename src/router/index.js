@@ -4,12 +4,12 @@ import { getCookie } from '../utils/normal';
 import { verifyToken } from '../api/index';
 
 Vue.use(Router);
-
 const router = new Router({
   mode: 'history',
   routes: [
     {
       path: '*',
+      name: 'global',
       component: () => import('@/pages/home')
     },
     {
@@ -60,4 +60,6 @@ router.beforeEach(async (to, from, next) => {
     next();
   }
 });
-export default router;
+export function CreateRouter () {
+  return router;
+}

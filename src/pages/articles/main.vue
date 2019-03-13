@@ -14,9 +14,9 @@
           enter-active-class="animated fadeInUp"
           leave-active-class="animated fadeOut">
           <Article-card
-            v-if="list.list.length"
-            :style-lint="{'animation-delay': index * 200 + 'ms'}"
-            v-for="(item, index) in list.list"
+            v-if="articleList.list.length"
+            :style-lint="{'animation-delay': index * 50 + 'ms'}"
+            v-for="(item, index) in articleList.list"
             :article="item"
             :key="JSON.stringify(item)"/>
         </transition-group>
@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import { getArticle } from '@api';
+import { mapGetters } from 'vuex';
 import topBar from '@/components/topBar';
 import botBar from '@/components/bottomBar';
 import ArticleCard from './components/card';
@@ -46,14 +46,13 @@ import {addEvent, removeEvent} from '@/utils/normal';
 export default {
   data () {
     return {
-      list: {
-        count: 0,
-        list: []
-      },
       show: false,
       backTop: 0, // 滚动高度
       showTopHeight: 200 // 显示回到顶部的距离
     };
+  },
+  asyncData ({ store, router }, param) {
+    return store.dispatch('getArticle', null);
   },
   watch: {
     backTop (val) {
@@ -64,8 +63,8 @@ export default {
       }
     }
   },
-  created () {
-    this.getList();
+  computed: {
+    ...mapGetters(['articleList'])
   },
   mounted () {
     this.$nextTick(() => {
@@ -84,10 +83,6 @@ export default {
     });
   },
   methods: {
-    async getList () {
-      const res = await getArticle(null);
-      this.list = res.data.data;
-    },
     /**
      * @description 回到顶部
      */
@@ -102,7 +97,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@asset/css/common.scss';
 .main-body {
   height: 100%;

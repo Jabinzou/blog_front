@@ -131,7 +131,12 @@ export async function getArticle (options) {
     const res = await http.get('/article/list', {
       params: options
     });
-    return res;
+    const {data} = res;
+    if (data.code === 1000 && data.data) {
+      return data.data;
+    } else {
+      Toast.error('拉取文章列表失败');
+    }
   } catch (err) {
     console.log(err);
     Toast.error(err.message || '联盟亡了!');

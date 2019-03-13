@@ -39,12 +39,3 @@ $color-nest: #ea2845;
 .text-center {
   text-align: center;
 }
-//---------- animation here -------------//
-@keyframes hue {
-  from {
-    -webkit-filter: hue-rotate(0deg);
-  }
-  to {
-    -webkit-filter: hue-rotate(-360deg);
-  }
-}

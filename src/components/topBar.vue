@@ -26,7 +26,7 @@ export default {
   name: 'TopBar'
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .menu {
   .btn-group {
     height: 100%;;

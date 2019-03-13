@@ -3,7 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const constant = require('./external')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -21,19 +21,6 @@ const createLintingRule = () => ({
 })
 
 module.exports = {
-  context: path.resolve(__dirname, '../'),
-  entry: {
-    app: ['babel-polyfill', './src/main.js'],
-    vendor: ['vue', 'quill', 'muse-ui']
-  },
-  externals: process.env.NODE_ENV === 'production' ? constant.externals: {},
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
-  },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
@@ -42,6 +29,13 @@ module.exports = {
       '@asset': resolve('src/assets'),
       '@api': resolve('src/api')
     }
+  },
+  output: {
+    libraryTarget: 'commonjs2',
+    path: config.build.assetsRoot,
+    filename: utils.assetsPath('js/[name].[hash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[hash].js'),
+    publicPath: '/dist/'
   },
   module: {
     rules: [
@@ -82,6 +76,18 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new UglifyJsPlugin({
+      extractComments: true,
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        }
+      },
+      sourceMap: config.build.productionSourceMap,
+      parallel: true
+    }),
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).
