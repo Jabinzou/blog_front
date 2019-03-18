@@ -20,11 +20,11 @@ export default {
         ['clean'],
         ['link', 'image', 'video']
       ],
-      handlers: {'emoji': function() {}}
+      handlers: {'emoji': function () {}}
     },
-    "emoji-toolbar": true,
-    "emoji-textarea": true,
-    "emoji-shortname": true,
+    'emoji-toolbar': true,
+    'emoji-textarea': true,
+    'emoji-shortname': true
   },
   placeholder: 'Insert text here ...',
   readOnly: false
