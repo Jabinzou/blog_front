@@ -16,6 +16,11 @@ export function getCookie (name) {
 export function uuid (len) {
   return CryptoJS.lib.WordArray.random(len / 2).toString().toUpperCase();
 }
+export function enc (word) {
+  // const normal = CryptoJS.MD5('Taylor-Swift').toString(CryptoJS.enc.Hex).toUpperCase();
+  // const key = CryptoJS.enc.Utf8.parse(normal);
+  return CryptoJS.MD5(`${word}`);
+}
 /**
  * @description 事件监听
  */

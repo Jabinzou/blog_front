@@ -44,6 +44,7 @@ import { getDetail } from '@api';
 import 'highlight.js/styles/atom-one-dark.css';
 import '@asset/css/highlight.scss';
 import '@asset/css/markdown.scss';
+import 'quill-emoji/dist/quill-emoji.css';
 import hljs from 'highlight.js';
 import botBar from '../../components/bottomBar';
 import {addEvent, removeEvent} from '@/utils/normal';
@@ -117,6 +118,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 @import '@asset/css/common.scss';
+.detail-wraper {
+  box-sizing: border-box;
+  height: 100%;
+}
 .fixed-bto {
   box-shadow: 0px -2px 10px 1px $color-gray;
   position: fixed;
@@ -134,6 +139,7 @@ export default {
   margin: 0 auto;
   padding: 10px 16px;
   width: 100%;
+  min-height: calc(100% - 150px);
 }
 @media (min-width: 992px) {
   .article-detail {

@@ -17,7 +17,6 @@
 }
 
 .article-detail p {
-  margin: 10px 0;
   color: #555;
 }
 
@@ -36,7 +35,6 @@
 .article-detail h1 {
   font-size: 1.6rem;
   line-height: 28px;
-  border-bottom: 3px double #999;
   margin: 52px 0 15px 0;
   padding-bottom: 7px;
   color: #000;
@@ -118,8 +116,8 @@
 }
 
 .article-detail img {
-  display: inline-block;
-  margin: 4px 0 10px;
+  display: block;
+  margin: 10px auto;
   box-sizing: border-box;
   vertical-align: top;
   max-width: 100%;
@@ -159,7 +157,7 @@
 .article-detail dir {
   display: block;
   list-style-type: disc;
-  padding-left: 17px;
+  padding-left: 1.5em;
   margin: 6px 0 10px;
   color: #555;
 }
@@ -225,4 +223,202 @@
   margin-left: -17px;
   margin-right: 3.8px;
   margin-top: 3px;
+}
+// quill css here
+.article-detail .ql-indent-1:not(.ql-direction-rtl) {
+  padding-left: 3em;
+}
+.article-detail li.ql-indent-1:not(.ql-direction-rtl) {
+  padding-left: 4.5em;
+}
+.article-detail .ql-indent-1.ql-direction-rtl.ql-align-right {
+  padding-right: 3em;
+}
+.article-detail li.ql-indent-1.ql-direction-rtl.ql-align-right {
+  padding-right: 4.5em;
+}
+.article-detail .ql-indent-2:not(.ql-direction-rtl) {
+  padding-left: 6em;
+}
+.article-detail li.ql-indent-2:not(.ql-direction-rtl) {
+  padding-left: 7.5em;
+}
+.article-detail .ql-indent-2.ql-direction-rtl.ql-align-right {
+  padding-right: 6em;
+}
+.article-detail li.ql-indent-2.ql-direction-rtl.ql-align-right {
+  padding-right: 7.5em;
+}
+.article-detail .ql-indent-3:not(.ql-direction-rtl) {
+  padding-left: 9em;
+}
+.article-detail li.ql-indent-3:not(.ql-direction-rtl) {
+  padding-left: 10.5em;
+}
+.article-detail .ql-indent-3.ql-direction-rtl.ql-align-right {
+  padding-right: 9em;
+}
+.article-detail li.ql-indent-3.ql-direction-rtl.ql-align-right {
+  padding-right: 10.5em;
+}
+.article-detail .ql-indent-4:not(.ql-direction-rtl) {
+  padding-left: 12em;
+}
+.article-detail li.ql-indent-4:not(.ql-direction-rtl) {
+  padding-left: 13.5em;
+}
+.article-detail .ql-indent-4.ql-direction-rtl.ql-align-right {
+  padding-right: 12em;
+}
+.article-detail li.ql-indent-4.ql-direction-rtl.ql-align-right {
+  padding-right: 13.5em;
+}
+.article-detail .ql-indent-5:not(.ql-direction-rtl) {
+  padding-left: 15em;
+}
+.article-detail li.ql-indent-5:not(.ql-direction-rtl) {
+  padding-left: 16.5em;
+}
+.article-detail .ql-indent-5.ql-direction-rtl.ql-align-right {
+  padding-right: 15em;
+}
+.article-detail li.ql-indent-5.ql-direction-rtl.ql-align-right {
+  padding-right: 16.5em;
+}
+.article-detail .ql-indent-6:not(.ql-direction-rtl) {
+  padding-left: 18em;
+}
+.article-detail li.ql-indent-6:not(.ql-direction-rtl) {
+  padding-left: 19.5em;
+}
+.article-detail .ql-indent-6.ql-direction-rtl.ql-align-right {
+  padding-right: 18em;
+}
+.article-detail li.ql-indent-6.ql-direction-rtl.ql-align-right {
+  padding-right: 19.5em;
+}
+.article-detail .ql-indent-7:not(.ql-direction-rtl) {
+  padding-left: 21em;
+}
+.article-detail li.ql-indent-7:not(.ql-direction-rtl) {
+  padding-left: 22.5em;
+}
+.article-detail .ql-indent-7.ql-direction-rtl.ql-align-right {
+  padding-right: 21em;
+}
+.article-detail li.ql-indent-7.ql-direction-rtl.ql-align-right {
+  padding-right: 22.5em;
+}
+.article-detail .ql-indent-8:not(.ql-direction-rtl) {
+  padding-left: 24em;
+}
+.article-detail li.ql-indent-8:not(.ql-direction-rtl) {
+  padding-left: 25.5em;
+}
+.article-detail .ql-indent-8.ql-direction-rtl.ql-align-right {
+  padding-right: 24em;
+}
+.article-detail li.ql-indent-8.ql-direction-rtl.ql-align-right {
+  padding-right: 25.5em;
+}
+.article-detail .ql-indent-9:not(.ql-direction-rtl) {
+  padding-left: 27em;
+}
+.article-detail li.ql-indent-9:not(.ql-direction-rtl) {
+  padding-left: 28.5em;
+}
+.article-detail .ql-indent-9.ql-direction-rtl.ql-align-right {
+  padding-right: 27em;
+}
+.article-detail li.ql-indent-9.ql-direction-rtl.ql-align-right {
+  padding-right: 28.5em;
+}
+.article-detail .ql-video {
+  display: block;
+  max-width: 100%;
+}
+.article-detail .ql-video.ql-align-center {
+  margin: 0 auto;
+}
+.article-detail .ql-video.ql-align-right {
+  margin: 0 0 0 auto;
+}
+.article-detail .ql-bg-black {
+  background-color: #000;
+}
+.article-detail .ql-bg-red {
+  background-color: #e60000;
+}
+.article-detail .ql-bg-orange {
+  background-color: #f90;
+}
+.article-detail .ql-bg-yellow {
+  background-color: #ff0;
+}
+.article-detail .ql-bg-green {
+  background-color: #008a00;
+}
+.article-detail .ql-bg-blue {
+  background-color: #06c;
+}
+.article-detail .ql-bg-purple {
+  background-color: #93f;
+}
+.article-detail .ql-color-white {
+  color: #fff;
+}
+.article-detail .ql-color-red {
+  color: #e60000;
+}
+.article-detail .ql-color-orange {
+  color: #f90;
+}
+.article-detail .ql-color-yellow {
+  color: #ff0;
+}
+.article-detail .ql-color-green {
+  color: #008a00;
+}
+.article-detail .ql-color-blue {
+  color: #06c;
+}
+.article-detail .ql-color-purple {
+  color: #93f;
+}
+.article-detail .ql-font-serif {
+  font-family: Georgia, Times New Roman, serif;
+}
+.article-detail .ql-font-monospace {
+  font-family: Monaco, Courier New, monospace;
+}
+.article-detail .ql-size-small {
+  font-size: 0.75em;
+}
+.article-detail .ql-size-large {
+  font-size: 1.5em;
+}
+.article-detail .ql-size-huge {
+  font-size: 2.5em;
+}
+.article-detail .ql-direction-rtl {
+  direction: rtl;
+  text-align: inherit;
+}
+.article-detail .ql-align-center {
+  text-align: center;
+}
+.article-detail .ql-align-justify {
+  text-align: justify;
+}
+.article-detail .ql-align-right {
+  text-align: right;
+}
+.article-detail.ql-blank::before {
+  color: rgba(0,0,0,0.6);
+  content: attr(data-placeholder);
+  font-style: italic;
+  left: 15px;
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
 }

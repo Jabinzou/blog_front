@@ -15,7 +15,7 @@
           leave-active-class="animated fadeOut">
           <Article-card
             v-if="list.list.length"
-            :style-lint="{'animation-delay': index * 200 + 'ms'}"
+            :style-lint="{'animation-delay': index * 50 + 'ms'}"
             v-for="(item, index) in list.list"
             :article="item"
             :key="JSON.stringify(item)"/>

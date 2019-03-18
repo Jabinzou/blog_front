@@ -7,9 +7,11 @@
 <script>
 import 'highlight.js/styles/atom-one-light.css';
 import 'highlight.js';
+import 'quill-emoji/dist/quill-emoji.js';
 import options from './constant.js';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
+import 'quill-emoji/dist/quill-emoji.css';
 import { deepMerge } from '@/utils/normal';
 
 export default {
@@ -119,6 +121,9 @@ export default {
   }
   .ql-container {
     height: calc(100% - 50px) !important;
+  }
+  /deep/ .textarea-emoji-control {
+    display: none !important;
   }
 }
 </style>
