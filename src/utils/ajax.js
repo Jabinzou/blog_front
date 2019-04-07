@@ -6,6 +6,7 @@
  * @param url upload url
  * @param xhr xhrHttpRequest object
  */
+import * as md5 from 'md5';
 function getError (url, xhr) {
   let msg;
   if (xhr.response) {
@@ -65,7 +66,7 @@ export default function upload (options) {
     });
   }
   if (options.file) {
-    formData.append(options.file.name, options.file, options.file.name); // append file use key: value
+    formData.append(options.fileKey || options.file.name, options.file, options.file.name); // append file use key: value
   }
   xhr.onerror = (e) => {
     options.onError(e);
@@ -80,8 +81,15 @@ export default function upload (options) {
   if (options.withCredentials && 'withCredentials' in xhr) { // true means you can set cookie in yourself site
     xhr.withCredentials = true;
   }
+  let timeStamp = Date.now();
   const headers = options.headers || {};
-
+  headers['auth_sign'] = md5(
+    JSON.stringify({
+      timeStamp: timeStamp,
+      data: {} + 'kissmyass'
+    })
+  );
+  headers['time_stamp'] = timeStamp;
   for (let item in headers) { // set header
     if (headers.hasOwnProperty(item) && headers[item] !== null) {
       xhr.setRequestHeader(item, headers[item]);

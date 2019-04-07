@@ -37,7 +37,6 @@
       </mu-bottom-nav>
     </transition>
   </div>
-
 </template>
 <script>
 import { getDetail } from '@api';
@@ -49,6 +48,7 @@ import hljs from 'highlight.js';
 import botBar from '../../components/bottomBar';
 import {addEvent, removeEvent} from '@/utils/normal';
 import Toast from 'muse-ui-toast';
+import imgLazy from '@/mixin/imgLazy';
 const highlightCode = () => {
   const preEl = document.querySelectorAll('pre');
   preEl.forEach((el) => {
@@ -56,6 +56,7 @@ const highlightCode = () => {
   });
 };
 export default {
+  mixins: [imgLazy],
   data () {
     return {
       content: null,

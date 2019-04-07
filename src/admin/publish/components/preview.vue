@@ -11,6 +11,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import '@asset/css/highlight.scss';
 import '@asset/css/markdown.scss';
 import hljs from 'highlight.js';
+import imgLazy from '@/mixin/imgLazy';
 const highlightCode = () => {
   const preEl = document.querySelectorAll('pre');
   preEl.forEach((el) => {
@@ -19,6 +20,7 @@ const highlightCode = () => {
 };
 export default {
   name: 'Preview',
+  mixins: [imgLazy],
   props: {
     content: {
       type: String,
