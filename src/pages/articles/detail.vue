@@ -2,6 +2,11 @@
   <div
     class="detail-wraper">
     <div
+      class="loading-mask"
+      v-if="loading">
+      <p class="text">客官稍等~</p>
+    </div>
+    <div
       v-html="content"
       class="article-detail"/>
     <bot-bar/>
@@ -40,6 +45,7 @@
 </template>
 <script>
 import { getDetail } from '@api';
+import 'nprogress/nprogress.css';
 import 'highlight.js/styles/atom-one-dark.css';
 import '@asset/css/highlight.scss';
 import '@asset/css/markdown.scss';
@@ -49,6 +55,7 @@ import botBar from '../../components/bottomBar';
 import {addEvent, removeEvent} from '@/utils/normal';
 import Toast from 'muse-ui-toast';
 import imgLazy from '@/mixin/imgLazy';
+import NProgress from 'nprogress';
 const highlightCode = () => {
   const preEl = document.querySelectorAll('pre');
   preEl.forEach((el) => {
@@ -63,7 +70,8 @@ export default {
       shift: null, // 展开底部导航
       scrollTop: false, // 上滚动显示底部菜单
       scrollAction: {x: undefined, y: undefined},
-      scrollDirection: null // 滚动方向
+      scrollDirection: null, // 滚动方向
+      loading: false
     };
   },
   watch: {
@@ -75,10 +83,20 @@ export default {
       }
     }
   },
+  created () {
+    NProgress.configure({ easing: 'ease', speed: 100, minimum: 0.2, trickleSpeed: 30 });
+    NProgress.start();
+    this.loading = true;
+  },
   mounted () {
     this.getDetail();
     this.$nextTick(() => {
       addEvent(window, 'scroll', this.scrollFunc);
+      setTimeout(() => {
+        NProgress.done();
+        NProgress.remove();
+        this.loading = false;
+      }, 300);
     });
   },
   updated () {
@@ -122,6 +140,23 @@ export default {
 .detail-wraper {
   box-sizing: border-box;
   height: 100%;
+}
+.loading-mask {
+  position: absolute;
+  z-index: 100;
+  background-color: hsla(0,0%,100%,.9);
+  top: 0;
+  right: 0;width: 100%;
+  height: 100%;
+  & > .text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    font-size: 1.2em;
+    text-align:center;
+    color: rgb(255, 64, 129);
+  }
 }
 .fixed-bto {
   box-shadow: 0px -2px 10px 1px $color-gray;

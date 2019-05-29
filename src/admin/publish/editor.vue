@@ -38,6 +38,7 @@
 <script>
 import Setting from './components/setting';
 import Publish from './components/publish';
+import ArticleManager from './components/articleManage';
 
 export default {
   data () {
@@ -54,6 +55,11 @@ export default {
           value: '发布',
           view: 'publish',
           color: '#536dfe'
+        }, {
+          icon: 'build', // icon
+          value: '文章管理',
+          view: 'articleManager',
+          color: '#009688'
         }
       ],
       menuBar: false, // menu list toggle
@@ -73,7 +79,8 @@ export default {
   },
   components: {
     Setting,
-    Publish
+    Publish,
+    ArticleManager
   }
 };
 </script>

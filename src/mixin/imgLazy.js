@@ -5,7 +5,7 @@ export default {
   },
   methods: {
     observeLozad () {
-      const lozadElements = document.querySelectorAll('.lozad');
+      const lozadElements = document.querySelector('.article-detail').querySelectorAll('.lozad');
       if (!lozadElements || !lozadElements.length) {
         return false;
       };

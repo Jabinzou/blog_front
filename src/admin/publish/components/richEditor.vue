@@ -36,11 +36,11 @@
         <mu-form-item
           label="content"
           help-text=""
-          prop="name"
+          prop="url"
           :rules="rules">
           <mu-text-field
             v-model="contentInput.url"
-            prop="name"/>
+            prop="url"/>
         </mu-form-item>
       </mu-form>
       <mu-button
@@ -66,11 +66,9 @@ import 'quill-emoji/dist/quill-emoji.css';
 import { deepMerge } from '@/utils/normal';
 import ImageBlot from '@/plugin/quill-img';
 import LaviUpload from '@/components/upload';
-import imgLazy from '@/mixin/imgLazy';
 
 export default {
   name: 'QuillEditor',
-  mixins: [imgLazy],
   components: {
     LaviUpload
   },
@@ -144,12 +142,14 @@ export default {
       this.$refs.upload.handleClick();
     },
     pasteImg (res) {
-      const range = this.quill.getSelection().index;
-      this.quill.insertEmbed(range || 0, 'imageBlot', {
-        'data-src': (res && res.data) || this.contentInput.url
-      });
-      this.quill.setSelection(range + 1);
-      this.observeLozad();
+      this.openAlert = false;
+      const range = this.quill.getSelection(true);
+      if (range && range.index) {
+        this.quill.insertEmbed(range.index || 0, 'imageBlot', {
+          'data-src': (res && res.data) || this.contentInput.url
+        });
+        this.quill.setSelection(range.index + 1);
+      }
       this.openAlert = false;
     },
     initialize () {
@@ -195,6 +195,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+/deep/ img {
+  min-width: 200px;
+  min-height: 80px;
+  background: url('../../../assets/img/blueprint.png') #F6F6F6;
+  background-size: 30px,30px;
+}
 .quill-editor {
   width: 100%;
   height: auto;
