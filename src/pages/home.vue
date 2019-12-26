@@ -22,6 +22,17 @@
       </ul>
     </div>
     <canvas class="canvas"/>
+    <div class="info_panel">
+      <ul>
+        <li>Copyright @jabinzou</li>
+        <li>
+          <a
+            class="icp-info"
+            href="http://www.beian.miit.gov.cn"
+            target="_blank">粤ICP备19026371号</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -100,6 +111,16 @@ export default {
 <style lang="scss">
 @import '@asset/css/common.scss';
 .home{
+  height: 100%;
+  width: 100%;
+  .info_panel {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    height: 40px;
+    color: #e0e0e0;
+    text-align: center;
+  }
   @media (min-width: 650px){
     .mega {
       font-size: 2.4rem;
@@ -146,7 +167,7 @@ export default {
     -moz-user-select: none;
     user-select: none
   }
-  ul > li {
+  .board-ground > li {
     float: left;
     &:not(:first-of-type) {
       margin-left: 126px;
